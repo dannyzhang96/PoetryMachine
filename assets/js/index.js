@@ -1,3 +1,3 @@
-var fs = require('fs');
-var files = fs.readdirSync('/assets/collection/');
-console.log(files[0])
+$(document).ready(function generatePoem() {
+    document.getElementById('poem').innerHTML = "random poem";
+});
