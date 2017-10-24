@@ -17,8 +17,30 @@
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/index.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //fetch text file
+            $.get('poetList.txt', function(data) {
+                //split on new lines
+                var lines = data.split(',');
+                //create select
+                var dropdown = $('<select id="dropdown">');
+                //iterate over lines of file and create a option element
+                for(var i=0;i<lines.length;i++) {
+                    //create option
+                    var el = $('<option value="'+i+'">'+lines[i]+'</option>');
+                    //append option to select
+                    $(dropdown).append(el);
+                }
+                //append select to page
+                $('body').append(dropdown);
+            });
+        });
+    </script>
+
 </head>
 <body>
-    <p id="poem"></p>
 </body>
+
 </html>
