@@ -1,0 +1,10 @@
+#poet_image {
+  float: left;
+  margin: 100px 10px 100px 100px;
+  height: 500px;
+}
+#poem_text {
+  float: left;
+  margin: 100px 10px 100px 10px;
+  height: 500px;
+}
