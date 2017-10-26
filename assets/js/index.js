@@ -6,10 +6,12 @@ $(document).ready(
         request.send(null)
         var my_JSON_object = JSON.parse(request.responseText);
         $('#poemTitle').html(my_JSON_object.title);
-        $('#poemAuthor').html(my_JSON_object.author);
+        $('#poemAuthor').html("by " + my_JSON_object.author);
+        var poemText = ''
         for (i = 0; i < my_JSON_object.text.length; i ++) {
-            $('#poemText').append('<p>' + my_JSON_object.text[i] + '</p>');
+            poemText += my_JSON_object.text[i] + "<br>"
         }
+        $('#poemText').html(poemText);
 });
 
 
