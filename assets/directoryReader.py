@@ -2,6 +2,7 @@
 
 import os
 import sys
+import shutil
 
 def getPoetList(): 
     f = open('poetList.txt', 'w')
@@ -28,3 +29,15 @@ def getPoemList():
     with open('poemList.txt', 'rb+') as f:
         f.seek(-2, os.SEEK_END)
         f.truncate()
+
+def extractPoems():
+    originPath = './collection/'
+    destinationPath = './collection/'
+    count = 0
+    for poet in os.listdir(originPath):
+        if not poet.startswith('.'):
+            dirs = os.listdir(originPath + poet)
+            for poem in dirs:
+                if not poem.startswith('.'):
+                    os.rename(originPath + poet + '/' + poem, destinationPath + str(count) + '.json')
+                    count += 1
