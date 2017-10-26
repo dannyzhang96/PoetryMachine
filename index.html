@@ -8,46 +8,22 @@
     <title>PoetryMachine</title>
 
     <!--CSS-->
-    <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="/assets/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/assets/css/stylesheet.css">
 
     <!--JS-->
-    <script src="/assets/js/jquery-3.2.1.min.js"></script>
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/index.js"></script>
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            //fetch text file
-            $.get('poetList.txt', function(data) {
-                //split on new lines
-                var lines = data.split(',');
-                //create select
-                var dropdown = $('<select id="dropdown">');
-                //iterate over lines of file and create a option element
-                for(var i=0;i<lines.length;i++) {
-                    //create option
-                    var el = $('<option value="'+i+'">'+lines[i]+'</option>');
-                    //append option to select
-                    $(dropdown).append(el);
-                }
-                //append select to page
-                $('body').append(dropdown);
-            });
-        });
-    </script>
 </head>
 <body>
-
-  <div id="poet_image">
-    <img src="/mojgani_si-303x335.jpg">
-  </div>
-  <div id="poem_text">
-    <p>"Disobedience.json"</p>
-  </div>
+  <h1 id="poemTitle"></h1>
+  <h3 id="poemAuthor"></h3>
+  <div id="poemText"></div>
+  <script src="assets/js/index.js"></script>
 </body>
 
 </html>
