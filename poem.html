@@ -27,16 +27,23 @@
             background-size: cover;
         }
         body { padding-top: 70px; }
-        div.absolute {
-            padding-left: 45%;
-            padding-top: 2%;
+        div #poemTitle {
+            padding-left: 30%;
+            font-family: "Arial Black";
+            font-style: normal;
+            font-size: 43px;
         }
-        div #text {
-            padding-left: 20%;
-            padding-top: 50%;
+        div #poemText {
+            padding-left: 30%;
+            font-family: "Helvetica Neue";
+            font-style: normal;
+            font-size: 30px;
+        }
+        div #poemAuthor {
+            padding-left: 30%;
             font-family: "Times New Roman";
             font-style: normal;
-            font-size: 40px;
+            font-size: 20px;
         }
         .navbar-fixed-top {
             min-height: 50px;
@@ -44,23 +51,27 @@
             font-style: normal;
             font-size: 25px;
         }
+        div.absolute {
+            padding-left: 98%;
+        }
     </style>
 
 
     <script type="text/javascript">
-//        $(document).ready(function() {
-//            //fetch text file
-//            $.get('poetList.txt', function(data) {
-//                //split on new lines
-//                var lines = data.split(',');
-//                //iterate over lines of file and create a option element
-//                for(var i=0;i<lines.length;i++) {
-//                    //create option
-//                    $('div div #dropdown1 li').append('<a value='+i+'>'+lines[i]+'</a>');
-//                    document.getElementById("poetName").value = lines[i];
-//                }
-//            });
-//        });
+        $(document).ready(function generatePoem() {
+            var poemID = Math.floor(Math.random() * 12529)
+            var request = new XMLHttpRequest();
+            request.open("GET", "assets/collection/" + poemID + ".json", false);
+            request.send(null)
+            var my_JSON_object = JSON.parse(request.responseText);
+            $('#poemTitle').html(my_JSON_object.title);
+            $('#poemAuthor').html("by " + my_JSON_object.author);
+            var poemText = ''
+            for (i = 0; i < my_JSON_object.text.length; i ++) {
+                poemText += my_JSON_object.text[i] + "<br>"
+            }
+            $('#poemText').html(poemText);
+        });
     </script>
 
 </head>
@@ -71,7 +82,7 @@
                 <a class="navbar-brand" href="#">Get Yo Poems!</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="index.html">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="contact.html">Contact Info</a></li>
@@ -80,23 +91,16 @@
         </div>
     </nav>
     <div class="container">
-        <p id="text">
-            Click the button to generate a random poem!
-        </p>
         <div class="absolute">
-            <a href="poem.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
-                Surprise Me!
+            <a href="poem.html" class="btn btn-info btn-lg" id="refreshButton">
+                <span class="glyphicon glyphicon-refresh"></span> Another One!
             </a>
         </div>
-        <!--<input id="poetName">-->
-        <!--<div class="dropdown">-->
-            <!--<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Select a Poet-->
-                <!--<span class="caret"></span></button>-->
-            <!--<ul id="dropdown1" class="dropdown">-->
-                <!--<li>-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</div>-->
+        <div id="poem">
+            <p id="poemTitle"></p>
+            <p id="poemAuthor"></p>
+            <p id="poemText"></p>
+        </div>
     </div>
 </body>
 
