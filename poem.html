@@ -8,26 +8,19 @@
     <title>Poetry Machine</title>
 
     <!--CSS-->
-    <link rel="stylesheet" href="../assets/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!--JS-->
-    <script src="../assets/js/jquery-3.2.1.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/index.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="assets/js/poem.js"></script>
 
     <style>
         body {
-            background: url(hive2.jpg) no-repeat center fixed;
+            background: url(assets/img/hive2.jpg) no-repeat center fixed;
             background-size: cover;
-            background-color: ;
+            padding-top: 70px;
         }
-        body { padding-top: 70px; }
         div #poemTitle {
             padding-left: 15%;
             font-family: "Arial Black";
@@ -49,53 +42,34 @@
         }
         .navbar-fixed-top {
             min-height: 50px;
-            font-family: "Times New Roman";
             font-style: normal;
             font-size: 25px;
         }
         div.absolute {
-            padding-left: 98%;
+            padding-left: 75%;
         }
     </style>
-
-
-    <script type="text/javascript">
-        $(document).ready(function generatePoem() {
-            var poemID = Math.floor(Math.random() * 12529)
-            var request = new XMLHttpRequest();
-            request.open("GET", "assets/collection/" + poemID + ".json", false);
-            request.send(null)
-            var my_JSON_object = JSON.parse(request.responseText);
-            $('#poemTitle').html(my_JSON_object.title);
-            $('#poemAuthor').html("by " + my_JSON_object.author);
-            var poemText = ''
-            for (i = 0; i < my_JSON_object.text.length; i ++) {
-                poemText += my_JSON_object.text[i] + "<br>"
-            }
-            $('#poemText').html(poemText);
-        });
-    </script>
 
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Get Yo Poems!</a>
+                <a class="navbar-brand" href="#">Poetry Machine</a>
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.html">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="contact.html">Contact Info</a></li>
-                <li class="active"><a href="#">Help</a></li>
+                <li class="active"><a href="contact.html">About Us</a></li>
+                <li class="active"><a href="help.html">Help</a></li>
             </ul>
         </div>
     </nav>
     <div class="container">
         <div class="absolute">
             <a href="poem.html" class="btn btn-info btn-lg" id="refreshButton">
-                <span class="glyphicon glyphicon-refresh"></span> Another One!
+                <span class="glyphicon glyphicon-refresh"></span> Get Another Poem
             </a>
         </div>
         <div id="poem">
