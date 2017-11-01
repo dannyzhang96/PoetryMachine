@@ -9,7 +9,7 @@ $(document).ready(
         $('#poemAuthor').html("by " + my_JSON_object.author);
         var poemText = ''
         for (i = 0; i < my_JSON_object.text.length; i ++) {
-            poemText += my_JSON_object.text[i] + "<br>"
+            poemText += my_JSON_object.text[i] + "<br/>"
         }
         $('#poemText').html(poemText);
 });
